@@ -4,8 +4,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'ShopHub - Modern E-Commerce Store',
-  description: 'Your one-stop shop for quality products at great prices.',
+  title: 'glories',
+  description: 'Kalite ve güvenli alışverişin adresi',
 }
 
 export default function RootLayout({ children }) {

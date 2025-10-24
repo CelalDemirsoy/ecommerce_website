@@ -6,14 +6,47 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { ShoppingCart, Search, Menu, X, ChevronRight, Star, Trash2, Plus, Minus } from 'lucide-react'
+import {
+  ShoppingCart,
+  Search,
+  Menu,
+  X,
+  ChevronRight,
+  Star,
+  Trash2,
+  Plus,
+  Minus
+} from 'lucide-react'
 
-// Mock Product Data
+/*
+  ============================
+  CONFIG
+  ============================
+  - logoUrl: kendi logo dosyan ile değiştir
+  - themeColor / header / accent: istenen lacivert / açık mavi / bej tonları
+*/
+
+const logoUrl = "logo.png" ;
+const theme = {
+  headerDark: '#0B1C4A',     // üst bar lacivert
+  headerLight: '#E6F3FA',    // üst arka plan açık mavi
+  pageBg: '#F8FAFF',         // sayfa arka planı
+  footerBg: '#FFF7F2',       // footer bej
+  accent: '#132C75',         // accent lacivert
+  textPrimary: '#111827'
+}
+
+/*
+  ============================
+  MOCK DATA (senin verdiğinle aynı)
+  ============================
+*/
+
 const PRODUCTS = [
   {
     id: 1,
     name: 'Wireless Headphones',
-    category: 'Electronics',
+    category: 'Elektronik',
     price: 199.99,
     description: 'Premium noise-cancelling wireless headphones with 30-hour battery life.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Headphones',
@@ -23,7 +56,7 @@ const PRODUCTS = [
   {
     id: 2,
     name: 'Smart Watch',
-    category: 'Electronics',
+    category: 'Elektronik',
     price: 299.99,
     description: 'Advanced fitness tracking and notification features in a sleek design.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Smart+Watch',
@@ -33,7 +66,7 @@ const PRODUCTS = [
   {
     id: 3,
     name: 'Leather Jacket',
-    category: 'Fashion',
+    category: 'Giyim',
     price: 249.99,
     description: 'Classic genuine leather jacket with modern cut and premium finish.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Leather+Jacket',
@@ -43,7 +76,7 @@ const PRODUCTS = [
   {
     id: 4,
     name: 'Running Shoes',
-    category: 'Sports',
+    category: 'Spor',
     price: 129.99,
     description: 'Lightweight running shoes with superior cushioning and support.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Running+Shoes',
@@ -53,7 +86,7 @@ const PRODUCTS = [
   {
     id: 5,
     name: 'Coffee Maker',
-    category: 'Home',
+    category: 'Ev&Yaşam',
     price: 89.99,
     description: 'Programmable coffee maker with thermal carafe and auto-brew feature.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Coffee+Maker',
@@ -63,7 +96,7 @@ const PRODUCTS = [
   {
     id: 6,
     name: 'Laptop Backpack',
-    category: 'Fashion',
+    category: 'Giyim',
     price: 79.99,
     description: 'Water-resistant laptop backpack with multiple compartments.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Backpack',
@@ -73,7 +106,7 @@ const PRODUCTS = [
   {
     id: 7,
     name: '4K Monitor',
-    category: 'Electronics',
+    category: 'Elektronik',
     price: 449.99,
     description: '27-inch 4K UHD monitor with HDR support and slim bezels.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=4K+Monitor',
@@ -83,7 +116,7 @@ const PRODUCTS = [
   {
     id: 8,
     name: 'Yoga Mat',
-    category: 'Sports',
+    category: 'Spor',
     price: 39.99,
     description: 'Extra-thick non-slip yoga mat with carrying strap.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Yoga+Mat',
@@ -93,7 +126,7 @@ const PRODUCTS = [
   {
     id: 9,
     name: 'Desk Lamp',
-    category: 'Home',
+    category: 'Ev&Yaşam',
     price: 59.99,
     description: 'LED desk lamp with adjustable brightness and color temperature.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Desk+Lamp',
@@ -103,7 +136,7 @@ const PRODUCTS = [
   {
     id: 10,
     name: 'Wireless Mouse',
-    category: 'Electronics',
+    category: 'Elektronik',
     price: 49.99,
     description: 'Ergonomic wireless mouse with precision tracking.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Mouse',
@@ -113,7 +146,7 @@ const PRODUCTS = [
   {
     id: 11,
     name: 'Denim Jeans',
-    category: 'Fashion',
+    category: 'Giyim',
     price: 89.99,
     description: 'Classic fit denim jeans with stretch comfort.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Jeans',
@@ -123,7 +156,7 @@ const PRODUCTS = [
   {
     id: 12,
     name: 'Dumbbells Set',
-    category: 'Sports',
+    category: 'Spor',
     price: 149.99,
     description: 'Adjustable dumbbells set with storage rack.',
     image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Dumbbells',
@@ -132,9 +165,14 @@ const PRODUCTS = [
   }
 ]
 
-const CATEGORIES = ['All', 'Electronics', 'Fashion', 'Home', 'Sports']
+const CATEGORIES = ['Tümü', 'Elektronik', 'Giyim', 'Ev&Yaşam', 'Spor', 'Hayvanlar', 'Kitap', 'Diğer'];
 
-// Cart Context
+/*
+  ============================
+  CART CONTEXT
+  ============================
+*/
+
 const CartContext = createContext()
 
 export const useCart = () => {
@@ -147,19 +185,27 @@ const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([])
 
   useEffect(() => {
-    const savedCart = localStorage.getItem('cart')
-    if (savedCart) setCart(JSON.parse(savedCart))
+    try {
+      const savedCart = localStorage.getItem('cart')
+      if (savedCart) setCart(JSON.parse(savedCart))
+    } catch (e) {
+      // ignore malformed
+    }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cart))
+    try {
+      localStorage.setItem('cart', JSON.stringify(cart))
+    } catch (e) {
+      // ignore
+    }
   }, [cart])
 
   const addToCart = (product) => {
-    setCart(prev => {
-      const existing = prev.find(item => item.id === product.id)
+    setCart((prev) => {
+      const existing = prev.find((item) => item.id === product.id)
       if (existing) {
-        return prev.map(item => 
+        return prev.map((item) =>
           item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
         )
       }
@@ -168,7 +214,7 @@ const CartProvider = ({ children }) => {
   }
 
   const removeFromCart = (productId) => {
-    setCart(prev => prev.filter(item => item.id !== productId))
+    setCart((prev) => prev.filter((item) => item.id !== productId))
   }
 
   const updateQuantity = (productId, quantity) => {
@@ -176,47 +222,62 @@ const CartProvider = ({ children }) => {
       removeFromCart(productId)
       return
     }
-    setCart(prev => prev.map(item => 
-      item.id === productId ? { ...item, quantity } : item
-    ))
+    setCart((prev) => prev.map((item) => (item.id === productId ? { ...item, quantity } : item)))
   }
 
   const clearCart = () => setCart([])
 
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
-  const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)
+  const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 0), 0)
+  const cartTotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 0)), 0)
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, cartCount, cartTotal }}>
+    <CartContext.Provider
+      value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, cartCount, cartTotal }}
+    >
       {children}
     </CartContext.Provider>
   )
 }
 
-// Navigation Component
+/*
+  ============================
+  NAVIGATION
+  - renkler güncellendi
+  - tüm metinler Türkçe
+  ============================
+*/
+
 const Navigation = ({ currentPage, setCurrentPage }) => {
   const { cartCount } = useCart()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navLinks = [
-    { name: 'Home', page: 'home' },
-    { name: 'Products', page: 'products' },
-    { name: 'About', page: 'about' },
-    { name: 'Contact', page: 'contact' }
+    { name: 'Anasayfa', page: 'home' },
+    { name: 'Ürünler', page: 'products' },
+    { name: 'Hakkımızda', page: 'about' },
+    { name: 'İletişim', page: 'contact' }
   ]
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <nav className="sticky top-0 z-50" style={{ background: theme.headerLight }}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div
+          className="flex items-center justify-between h-16"
+          style={{ borderBottom: `4px solid ${theme.headerDark}` }}
+        >
           <div className="flex items-center cursor-pointer" onClick={() => setCurrentPage('home')}>
-            <ShoppingCart className="h-8 w-8 text-black" />
-            <span className="ml-2 text-2xl font-bold text-black">ShopHub</span>
+            <div className="h-12 w-12 rounded-md bg-white flex items-center justify-center overflow-hidden">
+              {/* logo küçük versiyon */}
+              <img src={logoUrl} alt="GLORİES Logo" className="h-300 w-auto object-contain" />
+            </div>
+            <span className="ml-3 text-2xl font-bold" style={{ color: theme.textPrimary }}>
+              GLORİES
+            </span>
           </div>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map(link => (
+            {navLinks.map((link) => (
               <button
                 key={link.page}
                 onClick={() => setCurrentPage(link.page)}
@@ -231,7 +292,7 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
               onClick={() => setCurrentPage('cart')}
               className="relative p-2 hover:bg-gray-100 rounded-lg transition-colors"
             >
-              <ShoppingCart className="h-5 w-5 text-gray-700" />
+              <ShoppingCart className="h-5 w-5" />
               {cartCount > 0 && (
                 <span className="absolute -top-1 -right-1 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   {cartCount}
@@ -241,18 +302,15 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
+          <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            {navLinks.map(link => (
+          <div className="md:hidden py-4 border-t border-gray-200 bg-white">
+            {navLinks.map((link) => (
               <button
                 key={link.page}
                 onClick={() => {
@@ -273,7 +331,7 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
               }}
               className="block w-full text-left px-4 py-2 text-sm font-medium text-gray-600 flex items-center justify-between"
             >
-              Cart
+              Sepet
               {cartCount > 0 && (
                 <span className="bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
                   {cartCount}
@@ -287,56 +345,77 @@ const Navigation = ({ currentPage, setCurrentPage }) => {
   )
 }
 
-// Footer Component
+/*
+  ============================
+  FOOTER
+  - bağlantılar korunuyor (dokunulmadı),
+  - renkler bej / koyu lacivert tonuna çekildi
+  ============================
+*/
+
 const Footer = () => {
   return (
-    <footer className="bg-black text-white mt-16">
+    <footer className="mt-16" style={{ background: theme.footerBg }}>
       <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-gray-700">
           <div>
             <div className="flex items-center mb-4">
-              <ShoppingCart className="h-6 w-6" />
-              <span className="ml-2 text-xl font-bold">ShopHub</span>
+              <div className="h-10 w-10 bg-white rounded-md flex items-center justify-center overflow-hidden">
+                <img src={logoUrl} alt="GLORİES Logo" className="h-2007 w- object-contain" />
+              </div>
+              <span className="ml-2 text-xl font-bold">GLORİES</span>
             </div>
-            <p className="text-gray-400 text-sm">Your one-stop shop for quality products at great prices.</p>
+            <p className="text-sm">Kalite ve güvenli alışverişin adresi</p>
           </div>
+
           <div>
-            <h3 className="font-semibold mb-4">Shop</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>Electronics</li>
-              <li>Fashion</li>
-              <li>Home & Living</li>
-              <li>Sports</li>
+            <h3 className="font-semibold mb-4">Alışveriş</h3>
+            <ul className="space-y-2 text-sm">
+              <li>Elektronik</li>
+              <li>Giyim</li>
+              <li>Ev&Yaşam</li>
+              <li>Spor</li>
+              <li>Hayvanlar</li>
+              <li>Kitap</li>
+              <li>Diğer</li>
             </ul>
           </div>
+
           <div>
-            <h3 className="font-semibold mb-4">Customer Service</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>Contact Us</li>
-              <li>Shipping Info</li>
-              <li>Returns</li>
-              <li>FAQ</li>
+            <h3 className="font-semibold mb-4">Müşteri Hizmetleri</h3>
+            <ul className="space-y-2 text-sm">
+              <li>İletişim</li>
+              <li>Kargo</li>
+              <li>İade</li>
+              <li>Yardım</li>
             </ul>
           </div>
+
           <div>
-            <h3 className="font-semibold mb-4">Connect</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <h3 className="font-semibold mb-4">Bağlantılarımız</h3>
+            <ul className="space-y-2 text-sm">
               <li>Facebook</li>
               <li>Instagram</li>
-              <li>Twitter</li>
-              <li>Pinterest</li>
+              <li>Shopier</li>
+              <li>Trendyol</li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-          <p>&copy; 2025 ShopHub. All rights reserved.</p>
+
+        <div className="border-t border-gray-200 mt-8 pt-8 text-center text-sm text-gray-500">
+          <p>&copy; 2025 GLORİES. Tüm Hakları Saklıdır.</p>
         </div>
       </div>
     </footer>
   )
 }
 
-// Product Card Component
+/*
+  ============================
+  PRODUCT CARD
+  ============================
+*/
+
 const ProductCard = ({ product, onClick }) => {
   const { addToCart } = useCart()
 
@@ -359,33 +438,40 @@ const ProductCard = ({ product, onClick }) => {
             <span className="ml-1 text-sm text-gray-600">{product.rating}</span>
           </div>
           <div className="flex items-center justify-between">
-            <span className="text-xl font-bold">${product.price}</span>
+            <span className="text-xl font-bold">₺{product.price}</span>
           </div>
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
         <Button onClick={handleAddToCart} className="w-full bg-black hover:bg-gray-800">
-          Add to Cart
+          Sepete Ekle
         </Button>
       </CardFooter>
     </Card>
   )
 }
 
-// Home Page
+/*
+  ============================
+  HOME PAGE
+  - Öne çıkanlar ve kategoriler korunmuştur
+  - Renkler güncellendi
+  ============================
+*/
+
 const HomePage = ({ setCurrentPage, setSelectedProduct }) => {
-  const featuredProducts = PRODUCTS.filter(p => p.featured)
+  const featuredProducts = PRODUCTS.filter((p) => p.featured)
 
   return (
     <div>
       {/* Hero Section */}
-      <section className="bg-gray-900 text-white py-20">
+      <section style={{ background: theme.headerDark }} className="text-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-2xl">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">Discover Your Next Favorite Product</h1>
-            <p className="text-xl text-gray-300 mb-8">Shop the latest trends in electronics, fashion, home, and sports.</p>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6">Her Ürün Bir Hikâye, Her Hikâye GLORİES’de</h1>
+            <p className="text-xl text-gray-200 mb-8">Senin hikâyene değer katacak ürünleri şimdi keşfet</p>
             <Button onClick={() => setCurrentPage('products')} size="lg" className="bg-white text-black hover:bg-gray-200">
-              Shop Now <ChevronRight className="ml-2 h-5 w-5" />
+              Almaya Başlayın <ChevronRight className="ml-2 h-5 w-5" />
             </Button>
           </div>
         </div>
@@ -394,13 +480,13 @@ const HomePage = ({ setCurrentPage, setSelectedProduct }) => {
       {/* Featured Products */}
       <section className="container mx-auto px-4 py-16">
         <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl font-bold">Featured Products</h2>
-          <button onClick={() => setCurrentPage('products')} className="text-sm font-medium hover:underline">
-            View All <ChevronRight className="inline h-4 w-4" />
+          <h2 className="text-3xl font-bold">Öne Çıkan Ürünler</h2>
+          <button onClick={() => setCurrentPage('products')} className="text-sm font-medium hover:underline flex items-center">
+            Tümü <ChevronRight className="inline h-4 w-4 ml-2" />
           </button>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredProducts.map(product => (
+          {featuredProducts.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
@@ -416,9 +502,9 @@ const HomePage = ({ setCurrentPage, setSelectedProduct }) => {
       {/* Categories Section */}
       <section className="bg-gray-50 py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-8 text-center">Shop by Category</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">Kategoriler</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {CATEGORIES.filter(cat => cat !== 'All').map(category => (
+            {CATEGORIES.filter((cat) => cat !== 'Tüm Ürünler').map((category) => (
               <div
                 key={category}
                 onClick={() => setCurrentPage('products')}
@@ -434,28 +520,34 @@ const HomePage = ({ setCurrentPage, setSelectedProduct }) => {
   )
 }
 
-// Products Page
+/*
+  ============================
+  PRODUCTS PAGE
+  - Arama ve kategori filtreleme korunur
+  ============================
+*/
+
 const ProductsPage = ({ setCurrentPage, setSelectedProduct }) => {
-  const [selectedCategory, setSelectedCategory] = useState('All')
+  const [selectedCategory, setSelectedCategory] = useState('Tüm Ürünler')
   const [searchQuery, setSearchQuery] = useState('')
 
-  const filteredProducts = PRODUCTS.filter(product => {
-    const matchesCategory = selectedCategory === 'All' || product.category === selectedCategory
+  const filteredProducts = PRODUCTS.filter((product) => {
+    const matchesCategory = selectedCategory === 'Tüm Ürünler' || product.category === selectedCategory
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase())
     return matchesCategory && matchesSearch
   })
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">All Products</h1>
-      
+      <h1 className="text-4xl font-bold mb-8">Tüm Ürünler</h1>
+
       <div className="flex flex-col md:flex-row gap-8">
         {/* Sidebar */}
         <div className="w-full md:w-64 flex-shrink-0">
           <div className="bg-white p-6 rounded-lg border border-gray-200 sticky top-20">
-            <h3 className="font-semibold mb-4">Categories</h3>
+            <h3 className="font-semibold mb-4">Kategoriler</h3>
             <div className="space-y-2">
-              {CATEGORIES.map(category => (
+              {CATEGORIES.map((category) => (
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
@@ -478,7 +570,7 @@ const ProductsPage = ({ setCurrentPage, setSelectedProduct }) => {
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
               <Input
                 type="text"
-                placeholder="Search products..."
+                placeholder="Aramaya başla..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-10"
@@ -487,12 +579,10 @@ const ProductsPage = ({ setCurrentPage, setSelectedProduct }) => {
           </div>
 
           {/* Results */}
-          <div className="mb-4 text-sm text-gray-600">
-            {filteredProducts.length} products found
-          </div>
+          <div className="mb-4 text-sm text-gray-600">{filteredProducts.length} ürün bulundu</div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProducts.map(product => (
+            {filteredProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
@@ -506,7 +596,7 @@ const ProductsPage = ({ setCurrentPage, setSelectedProduct }) => {
 
           {filteredProducts.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-gray-500">No products found matching your criteria.</p>
+              <p className="text-gray-500">Aradığınız kritere uygun ürün bulunamadı.</p>
             </div>
           )}
         </div>
@@ -515,7 +605,13 @@ const ProductsPage = ({ setCurrentPage, setSelectedProduct }) => {
   )
 }
 
-// Product Detail Page
+/*
+  ============================
+  PRODUCT DETAIL PAGE
+  - Tüm başlıklar ve metinler Türkçe
+  ============================
+*/
+
 const ProductDetailPage = ({ product, setCurrentPage }) => {
   const { addToCart } = useCart()
   const [quantity, setQuantity] = useState(1)
@@ -523,7 +619,7 @@ const ProductDetailPage = ({ product, setCurrentPage }) => {
   if (!product) {
     return (
       <div className="container mx-auto px-4 py-8">
-        <p>Product not found</p>
+        <p>Ürün bulunamadı</p>
       </div>
     )
   }
@@ -534,12 +630,12 @@ const ProductDetailPage = ({ product, setCurrentPage }) => {
     }
   }
 
-  const relatedProducts = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4)
+  const relatedProducts = PRODUCTS.filter((p) => p.category === product.category && p.id !== product.id).slice(0, 4)
 
   return (
     <div className="container mx-auto px-4 py-8">
       <button onClick={() => setCurrentPage('products')} className="text-sm text-gray-600 hover:text-black mb-6">
-        ← Back to Products
+        ← Ürünlere Geri Dön
       </button>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
@@ -552,49 +648,41 @@ const ProductDetailPage = ({ product, setCurrentPage }) => {
         <div>
           <div className="text-sm text-gray-500 mb-2">{product.category}</div>
           <h1 className="text-4xl font-bold mb-4">{product.name}</h1>
-          
+
           <div className="flex items-center mb-6">
             <Star className="h-5 w-5 fill-black text-black" />
             <span className="ml-2 text-lg">{product.rating}</span>
-            <span className="ml-2 text-gray-500">(124 reviews)</span>
+            <span className="ml-2 text-gray-500">(124 yorum)</span>
           </div>
 
-          <div className="text-4xl font-bold mb-6">${product.price}</div>
+          <div className="text-4xl font-bold mb-6">₺{product.price}</div>
 
           <p className="text-gray-700 mb-8 leading-relaxed">{product.description}</p>
 
           <div className="mb-6">
-            <Label className="mb-2 block">Quantity</Label>
+            <Label className="mb-2 block">Adet</Label>
             <div className="flex items-center space-x-4">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              >
+              <Button variant="outline" size="icon" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
                 <Minus className="h-4 w-4" />
               </Button>
               <span className="text-xl font-semibold w-12 text-center">{quantity}</span>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => setQuantity(quantity + 1)}
-              >
+              <Button variant="outline" size="icon" onClick={() => setQuantity(quantity + 1)}>
                 <Plus className="h-4 w-4" />
               </Button>
             </div>
           </div>
 
           <Button onClick={handleAddToCart} size="lg" className="w-full bg-black hover:bg-gray-800">
-            Add to Cart
+            Sepete Ekle
           </Button>
 
           <div className="mt-8 border-t border-gray-200 pt-8">
-            <h3 className="font-semibold mb-4">Product Features</h3>
+            <h3 className="font-semibold mb-4">Ürün Özellikleri</h3>
             <ul className="space-y-2 text-gray-700">
-              <li>• Free shipping on orders over $50</li>
-              <li>• 30-day return policy</li>
-              <li>• 1-year warranty included</li>
-              <li>• Secure payment processing</li>
+              <li>• 50 ₺ ve üzeri siparişlerde ücretsiz kargo</li>
+              <li>• 30 gün iade garantisi</li>
+              <li>• 1 yıl garanti</li>
+              <li>• Güvenli ödeme</li>
             </ul>
           </div>
         </div>
@@ -603,9 +691,9 @@ const ProductDetailPage = ({ product, setCurrentPage }) => {
       {/* Related Products */}
       {relatedProducts.length > 0 && (
         <section>
-          <h2 className="text-3xl font-bold mb-8">Related Products</h2>
+          <h2 className="text-3xl font-bold mb-8">Benzer Ürünler</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {relatedProducts.map(p => (
+            {relatedProducts.map((p) => (
               <ProductCard
                 key={p.id}
                 product={p}
@@ -622,35 +710,46 @@ const ProductDetailPage = ({ product, setCurrentPage }) => {
   )
 }
 
-// Cart Page
-const CartPage = ({ setCurrentPage }) => {
-  const { cart, removeFromCart, updateQuantity, cartTotal } = useCart()
+/*
+  ============================
+  CART PAGE (Tamamlandı)
+  - Sepet boş görünümü
+  - Ürün miktarı arttırma/azaltma
+  - Sepeti temizleme
+  - Özet (TL)
+  ============================
+*/
 
-  if (cart.length === 0) {
+const CartPage = ({ setCurrentPage }) => {
+  const { cart, removeFromCart, updateQuantity, cartTotal, clearCart } = useCart()
+
+  if (!cart || cart.length === 0) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
         <ShoppingCart className="h-24 w-24 text-gray-300 mx-auto mb-4" />
-        <h2 className="text-2xl font-bold mb-4">Your cart is empty</h2>
-        <p className="text-gray-600 mb-8">Add some products to get started!</p>
-        <Button onClick={() => setCurrentPage('products')} className="bg-black hover:bg-gray-800">
-          Continue Shopping
-        </Button>
+        <h2 className="text-2xl font-bold mb-4">Sepetiniz boş</h2>
+        <p className="text-gray-600 mb-8">Başlamak için bir ürün ekleyin!</p>
+        <div className="flex items-center justify-center gap-4">
+          <Button onClick={() => setCurrentPage('products')} className="bg-black hover:bg-gray-800">
+            Alışverişe Başla
+          </Button>
+        </div>
       </div>
     )
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">Shopping Cart</h1>
+      <h1 className="text-4xl font-bold mb-8">Alışveriş Sepeti</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Cart Items */}
         <div className="lg:col-span-2">
           <div className="space-y-4">
-            {cart.map(item => (
+            {cart.map((item) => (
               <Card key={item.id}>
                 <CardContent className="p-4">
-                  <div className="flex gap-4">
+                  <div className="flex gap-4 items-center">
                     <div className="w-24 h-24 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                     </div>
@@ -662,7 +761,7 @@ const CartPage = ({ setCurrentPage }) => {
                           variant="outline"
                           size="icon"
                           className="h-8 w-8"
-                          onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                          onClick={() => updateQuantity(item.id, (item.quantity || 1) - 1)}
                         >
                           <Minus className="h-3 w-3" />
                         </Button>
@@ -671,27 +770,40 @@ const CartPage = ({ setCurrentPage }) => {
                           variant="outline"
                           size="icon"
                           className="h-8 w-8"
-                          onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                          onClick={() => updateQuantity(item.id, (item.quantity || 1) + 1)}
                         >
                           <Plus className="h-3 w-3" />
                         </Button>
+                        <span className="text-sm text-gray-600 ml-4">Birim: ₺{item.price}</span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="font-bold text-lg mb-2">${(item.price * item.quantity).toFixed(2)}</div>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        onClick={() => removeFromCart(item.id)}
-                        className="text-red-500 hover:text-red-700 hover:bg-red-50"
-                      >
-                        <Trash2 className="h-4 w-4" />
-                      </Button>
+                      <div className="font-bold text-lg mb-2">₺{(item.price * item.quantity).toFixed(2)}</div>
+                      <div className="flex justify-end gap-2 items-center">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={() => removeFromCart(item.id)}
+                          className="text-red-500 hover:text-red-700 hover:bg-red-50"
+                        >
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          <div className="flex items-center justify-between mt-6">
+            <Button variant="ghost" onClick={() => clearCart()} className="text-red-600">
+              Sepeti Temizle
+            </Button>
+            <div className="text-right">
+              <div className="text-sm text-gray-600">Ara Toplam: ₺{cartTotal.toFixed(2)}</div>
+              <div className="font-bold text-xl">Toplam: ₺{(cartTotal * 1.1).toFixed(2)}</div>
+            </div>
           </div>
         </div>
 
@@ -699,29 +811,29 @@ const CartPage = ({ setCurrentPage }) => {
         <div>
           <Card className="sticky top-20">
             <CardContent className="p-6">
-              <h3 className="font-semibold text-lg mb-4">Order Summary</h3>
+              <h3 className="font-semibold text-lg mb-4">Sipariş Özeti</h3>
               <div className="space-y-3 mb-6">
                 <div className="flex justify-between text-gray-600">
-                  <span>Subtotal</span>
-                  <span>${cartTotal.toFixed(2)}</span>
+                  <span>Ara Toplam</span>
+                  <span>₺{cartTotal.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
-                  <span>Shipping</span>
-                  <span>Free</span>
+                  <span>Kargo</span>
+                  <span>Ücretsiz</span>
                 </div>
                 <div className="flex justify-between text-gray-600">
-                  <span>Tax</span>
-                  <span>${(cartTotal * 0.1).toFixed(2)}</span>
+                  <span>Vergi (yakl.)</span>
+                  <span>₺{(cartTotal * 0.2).toFixed(2)}</span>
                 </div>
                 <div className="border-t border-gray-200 pt-3">
                   <div className="flex justify-between font-bold text-xl">
-                    <span>Total</span>
-                    <span>${(cartTotal * 1.1).toFixed(2)}</span>
+                    <span>Toplam</span>
+                    <span>₺{(cartTotal * 1.2).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
               <Button onClick={() => setCurrentPage('checkout')} className="w-full bg-black hover:bg-gray-800">
-                Proceed to Checkout
+                Ödemeye Geç
               </Button>
             </CardContent>
           </Card>
@@ -731,7 +843,12 @@ const CartPage = ({ setCurrentPage }) => {
   )
 }
 
-// Checkout Page
+/*
+  ============================
+  CHECKOUT PAGE (Türkçe)
+  ============================
+*/
+
 const CheckoutPage = ({ setCurrentPage }) => {
   const { cart, cartTotal, clearCart } = useCart()
   const [orderPlaced, setOrderPlaced] = useState(false)
@@ -751,10 +868,10 @@ const CheckoutPage = ({ setCurrentPage }) => {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold mb-4">Order Placed Successfully!</h2>
-          <p className="text-gray-600 mb-8">Thank you for your purchase. You will receive a confirmation email shortly.</p>
+          <h2 className="text-3xl font-bold mb-4">Siparişiniz Alındı!</h2>
+          <p className="text-gray-600 mb-8">Siparişiniz başarılı şekilde iletildi. E-posta ile onay alacaksınız.</p>
           <Button onClick={() => setCurrentPage('home')} className="bg-black hover:bg-gray-800">
-            Continue Shopping
+            Alışverişe Devam Et
           </Button>
         </div>
       </div>
@@ -763,7 +880,7 @@ const CheckoutPage = ({ setCurrentPage }) => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl font-bold mb-8">Checkout</h1>
+      <h1 className="text-4xl font-bold mb-8">Ödeme</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2">
@@ -771,30 +888,30 @@ const CheckoutPage = ({ setCurrentPage }) => {
             {/* Shipping Information */}
             <Card className="mb-6">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-xl mb-6">Shipping Information</h3>
+                <h3 className="font-semibold text-xl mb-6">Teslimat Bilgileri</h3>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="firstName">First Name</Label>
+                    <Label htmlFor="firstName">Ad</Label>
                     <Input id="firstName" required />
                   </div>
                   <div>
-                    <Label htmlFor="lastName">Last Name</Label>
+                    <Label htmlFor="lastName">Soyad</Label>
                     <Input id="lastName" required />
                   </div>
                   <div className="col-span-2">
-                    <Label htmlFor="email">Email</Label>
+                    <Label htmlFor="email">E-posta</Label>
                     <Input id="email" type="email" required />
                   </div>
                   <div className="col-span-2">
-                    <Label htmlFor="address">Address</Label>
+                    <Label htmlFor="address">Adres</Label>
                     <Input id="address" required />
                   </div>
                   <div>
-                    <Label htmlFor="city">City</Label>
+                    <Label htmlFor="city">Şehir</Label>
                     <Input id="city" required />
                   </div>
                   <div>
-                    <Label htmlFor="zip">ZIP Code</Label>
+                    <Label htmlFor="zip">Posta Kodu</Label>
                     <Input id="zip" required />
                   </div>
                 </div>
@@ -804,15 +921,15 @@ const CheckoutPage = ({ setCurrentPage }) => {
             {/* Payment Information */}
             <Card className="mb-6">
               <CardContent className="p-6">
-                <h3 className="font-semibold text-xl mb-6">Payment Information</h3>
+                <h3 className="font-semibold text-xl mb-6">Ödeme Bilgileri</h3>
                 <div className="space-y-4">
                   <div>
-                    <Label htmlFor="cardNumber">Card Number</Label>
+                    <Label htmlFor="cardNumber">Kart Numarası</Label>
                     <Input id="cardNumber" placeholder="1234 5678 9012 3456" required />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="expiry">Expiry Date</Label>
+                      <Label htmlFor="expiry">Son Kullanma</Label>
                       <Input id="expiry" placeholder="MM/YY" required />
                     </div>
                     <div>
@@ -825,7 +942,7 @@ const CheckoutPage = ({ setCurrentPage }) => {
             </Card>
 
             <Button type="submit" className="w-full bg-black hover:bg-gray-800" size="lg">
-              Place Order
+              Siparişi Tamamla
             </Button>
           </form>
         </div>
@@ -834,30 +951,32 @@ const CheckoutPage = ({ setCurrentPage }) => {
         <div>
           <Card className="sticky top-20">
             <CardContent className="p-6">
-              <h3 className="font-semibold text-lg mb-4">Order Summary</h3>
+              <h3 className="font-semibold text-lg mb-4">Sipariş Özeti</h3>
               <div className="space-y-3 mb-6">
-                {cart.map(item => (
+                {cart.map((item) => (
                   <div key={item.id} className="flex justify-between text-sm">
-                    <span className="text-gray-600">{item.name} x {item.quantity}</span>
-                    <span>${(item.price * item.quantity).toFixed(2)}</span>
+                    <span className="text-gray-600">
+                      {item.name} x {item.quantity}
+                    </span>
+                    <span>₺{(item.price * item.quantity).toFixed(2)}</span>
                   </div>
                 ))}
                 <div className="border-t border-gray-200 pt-3 mt-3">
                   <div className="flex justify-between text-gray-600 mb-2">
-                    <span>Subtotal</span>
-                    <span>${cartTotal.toFixed(2)}</span>
+                    <span>Ara Toplam</span>
+                    <span>₺{cartTotal.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between text-gray-600 mb-2">
-                    <span>Shipping</span>
-                    <span>Free</span>
+                    <span>Kargo</span>
+                    <span>Ücretsiz</span>
                   </div>
                   <div className="flex justify-between text-gray-600 mb-2">
-                    <span>Tax</span>
-                    <span>${(cartTotal * 0.1).toFixed(2)}</span>
+                    <span>Vergi</span>
+                    <span>₺{(cartTotal * 0.1).toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between font-bold text-xl mt-3">
-                    <span>Total</span>
-                    <span>${(cartTotal * 1.1).toFixed(2)}</span>
+                    <span>Toplam</span>
+                    <span>₺{(cartTotal * 1.1).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
@@ -869,44 +988,57 @@ const CheckoutPage = ({ setCurrentPage }) => {
   )
 }
 
-// About Page
+/*
+  ============================
+  ABOUT PAGE
+  - Senin verdiğin içerik korunmuştur (sadece biçim ve dil uyumu sağlandı)
+  ============================
+*/
+
 const AboutPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">About ShopHub</h1>
-        
+        <h1 className="text-4xl font-bold mb-8">GLORİES Hakkında</h1>
+
         <div className="space-y-6 text-gray-700 leading-relaxed">
           <p className="text-lg">
-            Welcome to ShopHub, your premier destination for quality products across multiple categories.
-            Since our founding, we've been committed to providing our customers with an exceptional shopping experience.
+            Her ürünün bir hikâyesi olduğuna inanıyoruz. GLORİES, sadece alışveriş yapılan bir platform değil;
+            kalite, güven ve deneyimin birleştiği bir yaşam alanıdır. Kurulduğumuz günden bu yana,
+            müşterilerimize güvenilir, hızlı ve keyifli bir alışveriş deneyimi sunmayı hedefledik.
+            Her kategori, özenle seçilmiş ürünlerle dolu; çünkü biz, her alışverişin küçük bir mutluluk anı olduğuna inanıyoruz.
           </p>
 
-          <h2 className="text-2xl font-bold text-black mt-8 mb-4">Our Mission</h2>
+          <h2 className="text-2xl font-bold text-black mt-8 mb-4">Misyonumuz</h2>
           <p>
-            At ShopHub, we believe that shopping should be simple, enjoyable, and accessible to everyone.
-            We carefully curate our product selection to ensure that every item meets our high standards of quality and value.
+            GLORİES olarak misyonumuz, müşterilerimize yüksek kaliteli ürünleri en uygun fiyatlarla,
+            en güvenli şekilde sunmaktır. Alışverişi sadece bir ihtiyaç değil, aynı zamanda keyifli bir deneyim hâline getirmek için çalışıyoruz.
+            Her gün daha iyiye ulaşmak, yenilikçi çözümler geliştirmek ve müşteri memnuniyetini en üst seviyede tutmak temel hedefimizdir.
           </p>
 
-          <h2 className="text-2xl font-bold text-black mt-8 mb-4">What We Offer</h2>
-          <ul className="space-y-2">
-            <li>• <strong>Wide Selection:</strong> From electronics to fashion, home goods to sports equipment</li>
-            <li>• <strong>Quality Guarantee:</strong> Every product is carefully vetted for quality</li>
-            <li>• <strong>Fast Shipping:</strong> Free shipping on orders over $50</li>
-            <li>• <strong>Easy Returns:</strong> 30-day hassle-free return policy</li>
-            <li>• <strong>Secure Shopping:</strong> Your data and payments are always protected</li>
+          <h2 className="text-2xl font-bold text-black mt-8 mb-4">Neden Bizi Tercih Etmelisiniz</h2>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Geniş ve sürekli güncellenen ürün yelpazesi</li>
+            <li>Uygun fiyat politikası</li>
+            <li>Hızlı ve güvenilir kargo hizmeti</li>
+            <li>7/24 müşteri desteği</li>
+            <li>Kolay iade ve değişim politikası</li>
+            <li>Müşteri memnuniyetine öncelik veren yaklaşım</li>
           </ul>
 
-          <h2 className="text-2xl font-bold text-black mt-8 mb-4">Our Values</h2>
-          <p>
-            We're more than just an online store. We're a community of people who care about quality,
-            sustainability, and customer satisfaction. Every purchase you make supports our commitment
-            to these values.
-          </p>
+          <h2 className="text-2xl font-bold text-black mt-8 mb-4">Değerlerimiz</h2>
+          <ul className="list-disc pl-5 space-y-2">
+            <li>Güven: Tüm işlemlerimizde şeffaflık ve güvenilirlik esastır.</li>
+            <li>Kalite: Her ürün, belirli kalite standartlarını karşılamak zorundadır.</li>
+            <li>Yenilikçilik: Sürekli gelişen teknolojiyi müşterilerimizin lehine kullanırız.</li>
+            <li>Müşteri Odaklılık: Her kararımızda müşterilerimizin memnuniyetini merkezde tutarız.</li>
+            <li>Sürdürülebilirlik: Doğaya ve topluma duyarlı bir alışveriş kültürü hedefleriz.</li>
+          </ul>
 
           <div className="bg-gray-50 p-8 rounded-lg mt-8">
             <p className="text-center text-lg">
-              Thank you for choosing ShopHub. We're honored to be part of your shopping journey.
+              "GLORİES'den alışveriş yapmak, sadece ürün satın almak değil, aynı zamanda değerlerimize ve özelliklerimize sahip olmaktır.
+              Ürünlerinizi ücretsiz ve hızlı bir şekilde satın almak için çok önemli bir şeydir."
             </p>
           </div>
         </div>
@@ -915,7 +1047,13 @@ const AboutPage = () => {
   )
 }
 
-// Contact Page
+/*
+  ============================
+  CONTACT PAGE
+  - Metinler Türkçe, form korundu
+  ============================
+*/
+
 const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false)
 
@@ -928,10 +1066,10 @@ const ContactPage = () => {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
         <div className="max-w-md mx-auto">
-          <h2 className="text-3xl font-bold mb-4">Message Sent!</h2>
-          <p className="text-gray-600 mb-8">Thank you for contacting us. We'll get back to you within 24 hours.</p>
+          <h2 className="text-3xl font-bold mb-4">Mesajınız Gönderildi!</h2>
+          <p className="text-gray-600 mb-8">İletişiminiz için teşekkürler. En kısa sürede size dönüş yapılacaktır.</p>
           <Button onClick={() => setSubmitted(false)} className="bg-black hover:bg-gray-800">
-            Send Another Message
+            Yeni Mesaj Gönder
           </Button>
         </div>
       </div>
@@ -941,52 +1079,47 @@ const ContactPage = () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold mb-8">Contact Us</h1>
+        <h1 className="text-4xl font-bold mb-8">Bize Ulaşın</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           <Card>
             <CardContent className="p-6">
-              <h3 className="font-semibold text-lg mb-4">Customer Service</h3>
-              <p className="text-gray-600 mb-2">Email: support@shophub.com</p>
-              <p className="text-gray-600 mb-2">Phone: 1-800-SHOP-HUB</p>
-              <p className="text-gray-600">Hours: Mon-Fri 9am-6pm EST</p>
+              <h3 className="font-semibold text-lg mb-4">Müşteri Hizmetleri</h3>
+              <p className="text-gray-600 mb-2">Email: glories@gmail.com</p>
+              <p className="text-gray-600 mb-2">Telefon: +90 555 555 555</p>
+              <p className="text-gray-600">Saat: 09.00 - 21.00</p>
             </CardContent>
           </Card>
 
           <Card>
             <CardContent className="p-6">
-              <h3 className="font-semibold text-lg mb-4">Address</h3>
-              <p className="text-gray-600">
-                123 Commerce Street<br />
-                Suite 456<br />
-                New York, NY 10001<br />
-                United States
-              </p>
+              <h3 className="font-semibold text-lg mb-4">Adres</h3>
+              <p className="text-gray-600">İstanbul, Türkiye</p>
             </CardContent>
           </Card>
         </div>
 
         <Card>
           <CardContent className="p-6">
-            <h3 className="font-semibold text-xl mb-6">Send us a Message</h3>
+            <h3 className="font-semibold text-xl mb-6">Mesaj Gönder</h3>
             <form onSubmit={handleSubmit}>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="contactName">Name</Label>
+                    <Label htmlFor="contactName">Ad Soyad</Label>
                     <Input id="contactName" required />
                   </div>
                   <div>
-                    <Label htmlFor="contactEmail">Email</Label>
+                    <Label htmlFor="contactEmail">E-posta</Label>
                     <Input id="contactEmail" type="email" required />
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="subject">Subject</Label>
+                  <Label htmlFor="subject">Konu</Label>
                   <Input id="subject" required />
                 </div>
                 <div>
-                  <Label htmlFor="message">Message</Label>
+                  <Label htmlFor="message">Açıklama</Label>
                   <textarea
                     id="message"
                     required
@@ -994,7 +1127,7 @@ const ContactPage = () => {
                   />
                 </div>
                 <Button type="submit" className="w-full bg-black hover:bg-gray-800">
-                  Send Message
+                  Mesajı Gönder
                 </Button>
               </div>
             </form>
@@ -1005,7 +1138,13 @@ const ContactPage = () => {
   )
 }
 
-// Main App Component
+/*
+  ============================
+  APP (Main)
+  - renderPage switch korunur
+  ============================
+*/
+
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home')
   const [selectedProduct, setSelectedProduct] = useState(null)
@@ -1033,11 +1172,9 @@ export default function App() {
 
   return (
     <CartProvider>
-      <div className="min-h-screen bg-white flex flex-col">
+      <div style={{ background: theme.pageBg }} className="min-h-screen flex flex-col">
         <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
-        <main className="flex-1">
-          {renderPage()}
-        </main>
+        <main className="flex-1">{renderPage()}</main>
         <Footer />
       </div>
     </CartProvider>
