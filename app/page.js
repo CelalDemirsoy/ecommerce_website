@@ -45,124 +45,124 @@ const theme = {
 const PRODUCTS = [
   {
     id: 1,
-    name: 'Wireless Headphones',
-    category: 'Elektronik',
-    price: 199.99,
-    description: 'Premium noise-cancelling wireless headphones with 30-hour battery life.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Headphones',
+    name: 'Fenerbahçe 2024/25 İÇ SAHA FORMASI',
+    category: 'Spor',
+    price: 349.99,
+    description: 'Fenerbahçe S.K. 24/25 iç saha forması, spor tutkunlarının beklentilerini karşılamak üzere tasarlanmış bir üründür. Yüksek kaliteli kumaş yapısı, oyuncuların performansını artırmak için optimum konfor ve hareket serbestliği sunar. Formanın hafif ve nefes alabilir özellikleri, yoğun maç temposunda dahi serin kalmayı sağlar.',
+    image: 'FB.png', 
     featured: true,
     rating: 4.5
   },
   {
     id: 2,
-    name: 'Smart Watch',
-    category: 'Elektronik',
-    price: 299.99,
-    description: 'Advanced fitness tracking and notification features in a sleek design.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Smart+Watch',
+    name: 'Galatasaray 2024/2025 İÇ SAHA PARÇALI FORMASI',
+    category: 'Spor',
+    price: 349.99,
+    description: 'Galatasaray Puma 2024/2025 iç saha parçalı forması, spor tutkunlarının beklentilerini karşılamak üzere tasarlanmış bir üründür. Yüksek kaliteli kumaş yapısı, oyuncuların performansını artırmak için optimum konfor ve hareket serbestliği sunar. Formanın hafif ve nefes alabilir özellikleri, yoğun maç temposunda dahi serin kalmayı sağlar.',
+    image: 'GS.png',
     featured: true,
     rating: 4.7
   },
   {
     id: 3,
-    name: 'Leather Jacket',
-    category: 'Giyim',
-    price: 249.99,
-    description: 'Classic genuine leather jacket with modern cut and premium finish.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Leather+Jacket',
+    name: 'Beşiktaş 2024/25 İÇ SAHA FORMASI  ',
+    category: 'Spor',
+    price: 349.99,
+    description: 'ADİDAS BEŞİKTAŞ FORMA K.K. 24-25 iç saha forması, spor tutkunlarının beklentilerini karşılamak üzere tasarlanmış bir üründür. Yüksek kaliteli kumaş yapısı, oyuncuların performansını artırmak için optimum konfor ve hareket serbestliği sunar. Formanın hafif ve nefes alabilir özellikleri, yoğun maç temposunda dahi serin kalmayı sağlar.',
+    image: 'bjk.png',
     featured: true,
     rating: 4.3
   },
-  {
-    id: 4,
-    name: 'Running Shoes',
-    category: 'Spor',
-    price: 129.99,
-    description: 'Lightweight running shoes with superior cushioning and support.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Running+Shoes',
-    featured: false,
-    rating: 4.6
-  },
-  {
-    id: 5,
-    name: 'Coffee Maker',
-    category: 'Ev&Yaşam',
-    price: 89.99,
-    description: 'Programmable coffee maker with thermal carafe and auto-brew feature.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Coffee+Maker',
-    featured: false,
-    rating: 4.4
-  },
-  {
-    id: 6,
-    name: 'Laptop Backpack',
-    category: 'Giyim',
-    price: 79.99,
-    description: 'Water-resistant laptop backpack with multiple compartments.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Backpack',
-    featured: false,
-    rating: 4.2
-  },
-  {
-    id: 7,
-    name: '4K Monitor',
-    category: 'Elektronik',
-    price: 449.99,
-    description: '27-inch 4K UHD monitor with HDR support and slim bezels.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=4K+Monitor',
-    featured: true,
-    rating: 4.8
-  },
-  {
-    id: 8,
-    name: 'Yoga Mat',
-    category: 'Spor',
-    price: 39.99,
-    description: 'Extra-thick non-slip yoga mat with carrying strap.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Yoga+Mat',
-    featured: false,
-    rating: 4.5
-  },
-  {
-    id: 9,
-    name: 'Desk Lamp',
-    category: 'Ev&Yaşam',
-    price: 59.99,
-    description: 'LED desk lamp with adjustable brightness and color temperature.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Desk+Lamp',
-    featured: false,
-    rating: 4.1
-  },
-  {
-    id: 10,
-    name: 'Wireless Mouse',
-    category: 'Elektronik',
-    price: 49.99,
-    description: 'Ergonomic wireless mouse with precision tracking.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Mouse',
-    featured: false,
-    rating: 4.3
-  },
-  {
-    id: 11,
-    name: 'Denim Jeans',
-    category: 'Giyim',
-    price: 89.99,
-    description: 'Classic fit denim jeans with stretch comfort.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Jeans',
-    featured: false,
-    rating: 4.4
-  },
-  {
-    id: 12,
-    name: 'Dumbbells Set',
-    category: 'Spor',
-    price: 149.99,
-    description: 'Adjustable dumbbells set with storage rack.',
-    image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Dumbbells',
-    featured: false,
-    rating: 4.7
-  }
+  // {
+  //   id: 4,
+  //   name: 'Running Shoes',
+  //   category: 'Spor',
+  //   price: 129.99,
+  //   description: 'Lightweight running shoes with superior cushioning and support.',
+  //   image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Running+Shoes',
+  //   featured: false,
+  //   rating: 4.6
+  // },
+  // {
+  //   id: 5,
+  //   name: 'Coffee Maker',
+  //   category: 'Ev&Yaşam',
+  //   price: 89.99,
+  //   description: 'Programmable coffee maker with thermal carafe and auto-brew feature.',
+  //   image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Coffee+Maker',
+  //   featured: false,
+  //   rating: 4.4
+  // },
+  // {
+  //   id: 6,
+  //   name: 'Laptop Backpack',
+  //   category: 'Giyim',
+  //   price: 79.99,
+  //   description: 'Water-resistant laptop backpack with multiple compartments.',
+  //   image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Backpack',
+  //   featured: false,
+  //   rating: 4.2
+  // },
+  // {
+  //   id: 7,
+  //   name: '4K Monitor',
+  //   category: 'Elektronik',
+  //   price: 449.99,
+  //   description: '27-inch 4K UHD monitor with HDR support and slim bezels.',
+  //   image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=4K+Monitor',
+  //   featured: true,
+  //   rating: 4.8
+  // },
+  // {
+  //   id: 8,
+  //   name: 'Yoga Mat',
+  //   category: 'Spor',
+  //   price: 39.99,
+  //   description: 'Extra-thick non-slip yoga mat with carrying strap.',
+  //   image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Yoga+Mat',
+  //   featured: false,
+  //   rating: 4.5
+  // },
+  // {
+  //   id: 9,
+  //   name: 'Desk Lamp',
+  //   category: 'Ev&Yaşam',
+  //   price: 59.99,
+  //   description: 'LED desk lamp with adjustable brightness and color temperature.',
+  //   image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Desk+Lamp',
+  //   featured: false,
+  //   rating: 4.1
+  // },
+  // {
+  //   id: 10,
+  //   name: 'Wireless Mouse',
+  //   category: 'Elektronik',
+  //   price: 49.99,
+  //   description: 'Ergonomic wireless mouse with precision tracking.',
+  //   image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Mouse',
+  //   featured: false,
+  //   rating: 4.3
+  // },
+  // {
+  //   id: 11,
+  //   name: 'Denim Jeans',
+  //   category: 'Giyim',
+  //   price: 89.99,
+  //   description: 'Classic fit denim jeans with stretch comfort.',
+  //   image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Jeans',
+  //   featured: false,
+  //   rating: 4.4
+  // },
+  // {
+  //   id: 12,
+  //   name: 'Dumbbells Set',
+  //   category: 'Spor',
+  //   price: 149.99,
+  //   description: 'Adjustable dumbbells set with storage rack.',
+  //   image: 'https://via.placeholder.com/400x400/1a1a1a/ffffff?text=Dumbbells',
+  //   featured: false,
+  //   rating: 4.7
+  // }
 ]
 
 const CATEGORIES = ['Tümü', 'Elektronik', 'Giyim', 'Ev&Yaşam', 'Spor', 'Hayvanlar', 'Kitap', 'Diğer'];
@@ -677,10 +677,10 @@ const ProductDetailPage = ({ product, setCurrentPage }) => {
           </Button>
 
           <div className="mt-8 border-t border-gray-200 pt-8">
-            <h3 className="font-semibold mb-4">Ürün Özellikleri</h3>
+            <h3 className="font-semibold mb-4"></h3>
             <ul className="space-y-2 text-gray-700">
-              <li>• 50 ₺ ve üzeri siparişlerde ücretsiz kargo</li>
-              <li>• 30 gün iade garantisi</li>
+              <li>• 400₺ ve üzeri siparişlerde ücretsiz kargo</li>
+              <li>• 15 gün iade garantisi</li>
               <li>• 1 yıl garanti</li>
               <li>• Güvenli ödeme</li>
             </ul>
