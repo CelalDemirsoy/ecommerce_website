@@ -71,7 +71,7 @@ const PRODUCTS = [
     description: 'ADİDAS BEŞİKTAŞ FORMA K.K. 24-25 iç saha forması, spor tutkunlarının beklentilerini karşılamak üzere tasarlanmış bir üründür. Yüksek kaliteli kumaş yapısı, oyuncuların performansını artırmak için optimum konfor ve hareket serbestliği sunar. Formanın hafif ve nefes alabilir özellikleri, yoğun maç temposunda dahi serin kalmayı sağlar.',
     image: 'bjk.png',
     featured: true,
-    rating: 4.3
+    rating: 4.4
   },
   // {
   //   id: 4,
