@@ -823,12 +823,12 @@ const CartPage = ({ setCurrentPage }) => {
                 </div>
                 <div className="flex justify-between text-gray-600">
                   <span>Vergi (yakl.)</span>
-                  <span>₺{(cartTotal * 0.2).toFixed(2)}</span>
+                  <span>₺{(cartTotal * 0.08).toFixed(2)}</span>
                 </div>
                 <div className="border-t border-gray-200 pt-3">
                   <div className="flex justify-between font-bold text-xl">
                     <span>Toplam</span>
-                    <span>₺{(cartTotal * 1.2).toFixed(2)}</span>
+                    <span>₺{(cartTotal * 1.08).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
@@ -972,11 +972,11 @@ const CheckoutPage = ({ setCurrentPage }) => {
                   </div>
                   <div className="flex justify-between text-gray-600 mb-2">
                     <span>Vergi</span>
-                    <span>₺{(cartTotal * 0.1).toFixed(2)}</span>
+                    <span>₺{(cartTotal * 0.08).toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between font-bold text-xl mt-3">
                     <span>Toplam</span>
-                    <span>₺{(cartTotal * 1.1).toFixed(2)}</span>
+                    <span>₺{(cartTotal * 1.08).toFixed(2)}</span>
                   </div>
                 </div>
               </div>
@@ -1086,7 +1086,7 @@ const ContactPage = () => {
             <CardContent className="p-6">
               <h3 className="font-semibold text-lg mb-4">Müşteri Hizmetleri</h3>
               <p className="text-gray-600 mb-2">Email: glories@gmail.com</p>
-              <p className="text-gray-600 mb-2">Telefon: +90 555 555 555</p>
+              <p className="text-gray-600 mb-2">Telefon: +905060242272</p>
               <p className="text-gray-600">Saat: 09.00 - 21.00</p>
             </CardContent>
           </Card>
