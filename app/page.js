@@ -802,7 +802,7 @@ const CartPage = ({ setCurrentPage }) => {
             </Button>
             <div className="text-right">
               <div className="text-sm text-gray-600">Ara Toplam: ₺{cartTotal.toFixed(2)}</div>
-              <div className="font-bold text-xl">Toplam: ₺{(cartTotal * 1.1).toFixed(2)}</div>
+              <div className="font-bold text-xl">Toplam: ₺{(cartTotal * 1.08).toFixed(2)}</div>
             </div>
           </div>
         </div>
