@@ -641,7 +641,7 @@ const ProductDetailPage = ({ product, setCurrentPage }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
         {/* Product Image */}
         <div className="bg-gray-100 rounded-lg overflow-hidden aspect-square">
-          <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+          <img src= {product.image} alt={product.name} className="w-full h-full object-cover" />
         </div>
 
         {/* Product Info */}
@@ -652,7 +652,7 @@ const ProductDetailPage = ({ product, setCurrentPage }) => {
           <div className="flex items-center mb-6">
             <Star className="h-5 w-5 fill-black text-black" />
             <span className="ml-2 text-lg">{product.rating}</span>
-            <span className="ml-2 text-gray-500">(124 yorum)</span>
+            <span className="ml-2 text-gray-500">(119 yorum)</span>
           </div>
 
           <div className="text-4xl font-bold mb-6">₺{product.price}</div>
