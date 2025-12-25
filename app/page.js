@@ -817,18 +817,19 @@ const CartPage = ({ setCurrentPage }) => {
                   <span>Ara Toplam</span>
                   <span>₺{cartTotal.toFixed(2)}</span>
                 </div>
-                <div className="flex justify-between text-gray-600">
-                  <span>Kargo</span>
-                  <span>Ücretsiz</span>
-                </div>
-                <div className="flex justify-between text-gray-600">
-                  <span>Vergi (yakl.)</span>
-                  <span>₺{(cartTotal * 0.08).toFixed(2)}</span>
-                </div>
+                <div className="flex justify-between text-gray-600 mb-2">
+                    <span>Kargo</span>
+                        <span>
+                          {cartTotal < 400 ? "₺99.00" : "Ücretsiz"}
+                        </span>
+                  </div>
+                
                 <div className="border-t border-gray-200 pt-3">
                   <div className="flex justify-between font-bold text-xl">
                     <span>Toplam</span>
-                    <span>₺{(cartTotal * 1.08).toFixed(2)}</span>
+                   <span>
+    ₺{(cartTotal + (cartTotal < 400 ? 99 : 0)).toFixed(2)}
+  </span>
                   </div>
                 </div>
               </div>
@@ -968,15 +969,15 @@ const CheckoutPage = ({ setCurrentPage }) => {
                   </div>
                   <div className="flex justify-between text-gray-600 mb-2">
                     <span>Kargo</span>
-                    <span>Ücretsiz</span>
-                  </div>
-                  <div className="flex justify-between text-gray-600 mb-2">
-                    <span>Vergi</span>
-                    <span>₺{(cartTotal * 0.08).toFixed(2)}</span>
+                        <span>
+                          {cartTotal < 400 ? "₺99.00" : "Ücretsiz"}
+                        </span>
                   </div>
                   <div className="flex justify-between font-bold text-xl mt-3">
                     <span>Toplam</span>
-                    <span>₺{(cartTotal * 1.08).toFixed(2)}</span>
+                   <span>
+    ₺{(cartTotal + (cartTotal < 400 ? 99 : 0)).toFixed(2)}
+  </span>
                   </div>
                 </div>
               </div>
