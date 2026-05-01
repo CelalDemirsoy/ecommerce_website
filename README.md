@@ -31,7 +31,7 @@
 ## 🚀 Getting Started
 
 ```bash
-git clone https://github.com/CelalDemirsoy/website.git
+git clone https://github.com/CelalDemirsoy/ecommerce_website.git
 cd website
 npm install
 npm run dev
